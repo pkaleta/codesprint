@@ -1,0 +1,21 @@
+import sys
+
+T = int(sys.stdin.readline())
+
+for t in xrange(T):
+    n = int(sys.stdin.readline())
+    city = []
+    dist = map(int, sys.stdin.readline().split())
+    pop = map(int, sys.stdin.readline().split())
+
+    for i in xrange(n):
+        city.append((pop[i], dist[i]))
+    city = sorted(city)
+
+    tot = 0
+    ret = 0
+    for i in xrange(n):
+        ret += (i * city[i][1] - tot) * city[i][0]
+        tot = city[i][1]
+
+    print ret
